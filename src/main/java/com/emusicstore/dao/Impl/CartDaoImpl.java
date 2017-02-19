@@ -30,7 +30,8 @@ public class CartDaoImpl implements CartDao {
     }
 
     public Cart read(String cartId) {
-
+        System.out.println(listOfCarts.size());
+        System.out.println(listOfCarts.get(cartId).getCartId());
         return listOfCarts.get(cartId);
     }
 

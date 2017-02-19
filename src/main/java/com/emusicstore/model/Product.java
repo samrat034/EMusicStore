@@ -1,35 +1,48 @@
 package com.emusicstore.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by samrat on 12/28/16.
  */
 
 @Entity
-public class Product {
+public class Product implements Serializable{
+
+    private static final long serialVersionUID = -5684031680543919300L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long productId;
+
     @NotEmpty (message = "The product name must not be null ")
     private String productName;
     private String productCategory;
     private String productDescription;
+
     @Min(value = 0, message = "The product price must not be less then 0")
     private double productPrice;
     private String productCondition;
     private String productStatus;
+
     @Min(value = 0, message = "The product stock should not be less then zero.")
     private int unitInStock;
     private String productManufacturer;
+
     @Transient
     private MultipartFile productImage;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<CartItem> cartItemList;
+
 
     public Long getProductId() {
         return productId;
@@ -109,5 +122,13 @@ public class Product {
 
     public void setProductImage(MultipartFile productImage) {
         this.productImage = productImage;
+    }
+
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
+    }
+
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
     }
 }

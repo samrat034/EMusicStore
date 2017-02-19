@@ -17,6 +17,7 @@ public class CartItemController {
     @RequestMapping
     public String get (HttpServletRequest request){
         return "redirect:/cart/"+request.getSession(true).getId();
+
     }
 
     @RequestMapping(value = "/{cartId}", method = RequestMethod.GET)

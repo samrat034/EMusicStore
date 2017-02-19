@@ -49,7 +49,11 @@
             password-parameter="password" />
         <security:logout
             logout-success-url="/login?logout"/>
+        <security:csrf disabled="true"></security:csrf>
+
     </security:http>
+
+
 
     <security:authentication-manager>
         <security:authentication-provider>

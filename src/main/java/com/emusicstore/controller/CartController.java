@@ -28,6 +28,10 @@ public class CartController {
     @RequestMapping(value = "/{cartId}", method = RequestMethod.GET)
     public @ResponseBody
     Cart read (@PathVariable(value = "cartId") String cartId){
+
+        //System.out.println(cartId);
+        Cart c=cartDao.read(cartId);
+       // System.out.println(c.getCartId());
         return cartDao.read(cartId);
     }
 
@@ -46,10 +50,12 @@ public class CartController {
     @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void addItem(@PathVariable(value = "productId") Long productId, HttpServletRequest request){
+
         String sessionId=request.getSession(true).getId();
         Cart cart=cartDao.read(sessionId);
         if(cart==null){
             cart=cartDao.create(new Cart(sessionId));
+            System.out.println("create new cart");
         }
 
         Product product= productDao.getProductById(productId);
