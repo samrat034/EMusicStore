@@ -15,7 +15,7 @@
             <p class="lead">Fill the complete information to add a Product:</p>
         </div>
         <%--spring form --%>
-        <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct" method="post"
+        <form:form action="${pageContext.request.contextPath}/admin/product/addProduct" method="post"
                    commandName="product" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label> <form:errors path="productName" cssStyle="color: #2b542c"/>

@@ -15,7 +15,7 @@
             <p class="lead">Please update product!!</p>
         </div>
         <%--spring form --%>
-        <form:form action="${pageContext.request.contextPath}/admin/productInventory/editProduct" method="post"
+        <form:form action="${pageContext.request.contextPath}/admin/product/editProduct" method="post"
                    commandName="product" enctype="multipart/form-data">
         <form:hidden path="productId" value="${product.productId}"/>
          <div class="form-group">

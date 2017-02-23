@@ -20,7 +20,7 @@ public class Product implements Serializable{
     private static final long serialVersionUID = -5684031680543919300L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long productId;
+    private int productId;
 
     @NotEmpty (message = "The product name must not be null ")
     private String productName;
@@ -43,12 +43,11 @@ public class Product implements Serializable{
     @JsonIgnore
     private List<CartItem> cartItemList;
 
-
-    public Long getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
